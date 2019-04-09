@@ -13,11 +13,13 @@ print("Try to guess my number.")
 random_int = randint(1, 100)
 
 while True:
+    number = []
     try:
         guess = int(input("Your guess? "))
 
         if guess == random_int:
             print("Well done, " + name + "! You found my number in " + str(count) + " tries!")
+            number.append(count)
             break
         elif guess < 1 or guess > 100:
             print("Please choose a number between 1 and 100!")
@@ -30,3 +32,5 @@ while True:
         print("Please enter a valid integer")
     count+=1
             
+print(number)
+
