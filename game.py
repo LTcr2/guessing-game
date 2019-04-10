@@ -11,19 +11,31 @@ print(name + ", I'm thinking of a number between 1 and 100.")
 print("Try to guess my number.")
 
 random_int = randint(1, 100)
+print(random_int)
+
+number = []
 
 while True:
-    number = []
     try:
         guess = int(input("Your guess? "))
 
         if guess == random_int:
-            print("Well done, " + name + "! You found my number in " + str(count) + " tries!")
-            number.append(count)
-            break
+            # count+=1
+            print("Well done, " + name + "! You found my number in " + str(count + 1) + " tries!")
+            number.append(count + 1)
+            count = 0
+            play_again = input("Would you like to play again? Enter Y or N. ")
+
+            if play_again == "Y":
+                random_int = randint(1, 100)
+                print(random_int)
+                continue
+            else:
+                min_number = min(number)
+                print("Nice! Your lowest number of guesses was " + str(min_number))
+                break
         elif guess < 1 or guess > 100:
             print("Please choose a number between 1 and 100!")
-            # guess = int(input("Your guess? "))
         elif guess < random_int:
             print("Your guess is too low, try again.")
         else:
@@ -31,6 +43,5 @@ while True:
     except ValueError:
         print("Please enter a valid integer")
     count+=1
-            
-print(number)
+
 
