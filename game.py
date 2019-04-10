@@ -5,7 +5,8 @@
 from random import randint
 
 name = input("Howdy, what's your name? Type in your name: ")
-count = 0
+count = 1
+max_guesses = 5
 
 print(name + ", I'm thinking of a number between 1 and 100.")
 print("Try to guess my number.")
@@ -18,12 +19,25 @@ number = []
 while True:
     try:
         guess = int(input("Your guess? "))
+        if max_guesses == count:
+            print("Too many tries!")
+            # break
+            # play_again = input("Would you like to play again? Enter Y or N. ")
+
+            # if play_again == "Y":
+            #     random_int = randint(1, 100)
+            #     print(random_int)
+            #     continue
+            # else:
+            #     min_number = min(number)
+            #     print("Nice! Your lowest number of guesses was " + str(min_number))
+            #     break
 
         if guess == random_int:
             # count+=1
-            print("Well done, " + name + "! You found my number in " + str(count + 1) + " tries!")
-            number.append(count + 1)
-            count = 0
+            print("Well done, " + name + "! You found my number in " + str(count) + " tries!")
+            number.append(count)
+            count = 1
             play_again = input("Would you like to play again? Enter Y or N. ")
 
             if play_again == "Y":
